@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.24;
 
+import { Governed } from "./Governed.sol";
 import { Governance } from "./Governance.sol";
 import { GovernanceToken } from "./GovernanceToken.sol";
-import { RaffleExtended } from "../Raffle/RaffleExtended.sol";
 import { Proposal, ProposalStorage, ProposalStorageState } from "./ProposalStorage.sol";
 
 contract GovernanceExtended is Governance {
@@ -21,8 +21,8 @@ contract GovernanceExtended is Governance {
         token = _token;
     }
 
-    function setRaffleAddress(RaffleExtended _raffle) public onlyOwner {
-        raffle = _raffle;
+    function setGovernedAddress(Governed _governed) public onlyOwner {
+        governed = _governed;
     }
 
     function setPercentageForProposal(

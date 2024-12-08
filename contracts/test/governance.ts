@@ -9,7 +9,7 @@ import { ethers } from "hardhat";
 import {
   GovernanceExtended__factory,
   GovernanceToken__factory,
-  RaffleExtended__factory,
+  Governed__factory,
 } from "../typechain-types";
 
 function encodeParameters(
@@ -42,9 +42,15 @@ describe("Governance", () => {
       maxFeePerGas: 500000000,
     });
 
-    const raffleContract = await new RaffleExtended__factory(owner).deploy({
-      maxFeePerGas: 500000000,
-    });
+    const governedContract = await new Governed__factory(owner).deploy(
+      await governanceContract.getAddress(),
+      0n,
+      0n,
+      0n,
+      {
+        maxFeePerGas: 500000000,
+      },
+    );
 
     const tokenContract = await new GovernanceToken__factory(owner).deploy({
       maxFeePerGas: 500000000,
@@ -64,19 +70,19 @@ describe("Governance", () => {
 
     await governanceContract.initialize(
       await tokenContract.getAddress(),
-      await raffleContract.getAddress(),
+      await governedContract.getAddress(),
       executer.address,
       100,
       100,
       100,
     );
 
-    await raffleContract.setGovernor(await governanceContract.getAddress());
+    await governedContract.setGovernor(await governanceContract.getAddress());
 
     return {
       contracts: {
         governance: governanceContract,
-        raffle: raffleContract,
+        raffle: governedContract,
         token: tokenContract,
       },
       users: {
