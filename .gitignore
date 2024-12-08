@@ -1,0 +1,53 @@
+*/node_modules
+*/.env
+*/.yarn
+
+# Hardhat files
+contracts/cache
+contracts/artifacts
+contracts/node_modules
+
+# TypeChain files
+contracts/typechain
+contracts/typechain-types
+
+# solidity-coverage files
+contracts/coverage
+contracts/coverage.json
+
+contracts/ignition/deployments
+
+
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+front/logs
+front/*.log
+front/npm-debug.log*
+front/yarn-debug.log*
+front/yarn-error.log*
+front/pnpm-debug.log*
+front/lerna-debug.log*
+front/node_modules
+front/dist
+front/dist-ssr
+front/*.local
+front/*.suo
+front/*.ntvs*
+front/*.njsproj
+front/*.sln
+front/*.sw?
+front/tsconfig.tsbuildinfo
+
+# Testing
+indexer/coverage
+indexer/coverage.json
+
+indexer/typechain
+indexer/typechain-types
+
+indexer/cache
+indexer/build/
+indexer/generated/

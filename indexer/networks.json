@@ -1,0 +1,12 @@
+{
+  "sepolia": {
+    "MarketplaceExtended": {
+      "address": "0x4021800457040b297706b7ADfeaAd1D6264368A6",
+      "startBlock": 6250515
+    },
+    "OrderbookExtended": {
+      "address": "0x57854F795eb7228DF90fDEc179C995d1eA9b39E2",
+      "startBlock": 6285390
+    }
+  }
+}
