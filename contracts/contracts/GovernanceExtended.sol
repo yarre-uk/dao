@@ -9,12 +9,12 @@ import { Proposal, ProposalStorage, ProposalStorageState } from "./ProposalStora
 contract GovernanceExtended is Governance {
     using ProposalStorage for ProposalStorageState;
 
-    function grantRoleExecuter(address account) public onlyOwner {
-        grantRole(EXECUTER_ROLE, account);
+    function grantRoleAdmin(address account) public onlyOwner {
+        grantRole(ADMIN_ROLE, account);
     }
 
-    function revokeRoleExecuter(address account) public onlyOwner {
-        revokeRole(EXECUTER_ROLE, account);
+    function revokeRoleAdmin(address account) public onlyOwner {
+        revokeRole(ADMIN_ROLE, account);
     }
 
     function setTokenAddress(GovernanceToken _token) public onlyOwner {

@@ -10,7 +10,7 @@ import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol"
 import { Initializable } from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
 
 contract Governance is Ownable, AccessControl, Initializable {
-    bytes32 public constant EXECUTER_ROLE = keccak256("EXECUTER_ROLE");
+    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
     GovernanceToken public token;
     Governed public governed;
@@ -50,8 +50,8 @@ contract Governance is Ownable, AccessControl, Initializable {
         token = GovernanceToken(_token);
         governed = Governed(_governed);
 
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _grantRole(EXECUTER_ROLE, _defaultExecuter);
+        _grantRole(ADMIN_ROLE, msg.sender);
+        _grantRole(ADMIN_ROLE, _defaultExecuter);
 
         percentageForProposal = _percentageForProposal;
         blocksBeforeVoting = _blocksBeforeVoting;
@@ -165,7 +165,7 @@ contract Governance is Ownable, AccessControl, Initializable {
 
     function processProposal(
         bytes32 id
-    ) public virtual onlyRole(EXECUTER_ROLE) {
+    ) public virtual onlyRole(ADMIN_ROLE) {
         Proposal storage proposal = _proposalsState.getData(id);
 
         require(

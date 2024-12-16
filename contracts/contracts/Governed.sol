@@ -16,12 +16,10 @@ contract Governed {
     event ZChanged(uint256 Z);
 
     constructor(
-        address _governor,
         uint256 _X,
         uint256 _Y,
         uint256 _Z
     ) {
-        governor = _governor;
         X = _X;
         Y = _Y;
         Z = _Z;

@@ -43,7 +43,6 @@ describe("Governance", () => {
     });
 
     const governedContract = await new Governed__factory(owner).deploy(
-      await governanceContract.getAddress(),
       0n,
       0n,
       0n,

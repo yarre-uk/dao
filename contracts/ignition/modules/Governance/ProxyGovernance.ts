@@ -8,8 +8,10 @@ export default buildModule("ProxyGovernance", (m) => {
   const token = m.contract("GovernanceToken", [], {
     id: "Governance___FinalToken",
   });
+  const governed = m.contract("Governed", [0, 0, 0], {
+    id: "Governance___FinalGoverned",
+  });
   const { governance } = m.useModule(Governance);
-  // const { proxy: proxyRaffle } = m.useModule(RaffleProxy);
 
   m.call(_proxy, "setImplementation", [governance]);
 
@@ -21,16 +23,17 @@ export default buildModule("ProxyGovernance", (m) => {
   const user = m.getAccount(1);
   const executer = m.getAccount(2);
 
+
   m.call(proxyGovernance, "initialize", [
     token,
-    // proxyRaffle,
+    governed,
     executer,
     100,
     100,
     100,
   ]);
 
-  // m.call(proxyRaffle, "setGovernor", [proxyGovernance]);
+  m.call(governed, "setGovernor", [proxyGovernance]);
 
   m.call(token, "mint", [owner, ethers.parseEther("100")], {
     from: owner,
@@ -52,6 +55,5 @@ export default buildModule("ProxyGovernance", (m) => {
     id: "delegate_executer",
   });
 
-  return { proxyGovernance, token };
-  // return { proxyGovernance, proxyRaffle, token };
+  return { proxyGovernance, governed, token };
 });
