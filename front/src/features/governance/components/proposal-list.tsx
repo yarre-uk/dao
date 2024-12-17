@@ -20,14 +20,14 @@ import {
 import {
   proxyGovernanceAbi,
   proxyGovernanceAddress,
-  proxyRaffleAbi,
+  proxyGovernedAbi,
 } from '@/constants';
 import { FullProposalEvent, bytes } from '@/types';
 
 type Mode = 'vote' | 'process' | 'view';
 
 const decodeCalldata = (data: bytes) => {
-  const decoded = decodeFunctionData({ abi: proxyRaffleAbi, data });
+  const decoded = decodeFunctionData({ abi: proxyGovernedAbi, data });
 
   return `${decoded.functionName}(${decoded.args.join(', ')})`;
 };

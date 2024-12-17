@@ -8,7 +8,7 @@ import VoteCard from './components/vote';
 
 import { Card, Tabs, TabsContent, TabsList, TabsTrigger } from '@/components';
 import {
-  EXECUTER_ROLE,
+  ADMIN_ROLE,
   proxyGovernanceAbi,
   proxyGovernanceAddress,
 } from '@/constants';
@@ -21,7 +21,7 @@ const Governance = () => {
     abi: proxyGovernanceAbi,
     address: proxyGovernanceAddress,
     functionName: 'hasRole',
-    args: [EXECUTER_ROLE, address ?? '0x'],
+    args: [ADMIN_ROLE, address ?? '0x'],
   });
 
   return (

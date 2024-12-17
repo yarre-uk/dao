@@ -31,7 +31,7 @@ import {
 import {
   approvedTokens,
   approvedTokensInfo,
-  proxyRaffleAddress,
+  proxyGovernedAddress,
 } from '@/constants';
 
 const formSchema = z.object({
@@ -67,7 +67,7 @@ const ApproveCard = () => {
       address: approvedTokens[+data.token],
       abi: erc20Abi,
       functionName: 'approve',
-      args: [proxyRaffleAddress, BigInt(data.amount)],
+      args: [proxyGovernedAddress, BigInt(data.amount)],
       chain: currentChain,
       account: address,
     });
@@ -83,7 +83,7 @@ const ApproveCard = () => {
         abi: erc20Abi,
         address: approvedTokens[+form.getValues().token],
         functionName: 'allowance',
-        args: [address, proxyRaffleAddress],
+        args: [address, proxyGovernedAddress],
       });
 
       const balance = readContract(wagmiConfig, {

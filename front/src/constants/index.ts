@@ -1,6 +1,6 @@
-export { proxyRaffleAbi, proxyGovernanceAbi } from './abi';
+export { proxyGovernedAbi, proxyGovernanceAbi } from './abi';
 export {
-  proxyRaffleAddress,
+  proxyGovernedAddress,
   proxyGovernanceAddress,
   approvedTokens,
   approvedTokensInfo,
@@ -9,4 +9,4 @@ export {
 } from './addresses';
 export { proxyContract } from './contracts';
 export { ROUTE } from './routes';
-export { EXECUTER_ROLE } from './roles';
+export { ADMIN_ROLE } from './roles';

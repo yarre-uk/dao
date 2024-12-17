@@ -31,9 +31,9 @@ import {
   TransactionInfo,
 } from '@/components';
 import {
-  proxyRaffleAbi,
+  proxyGovernedAbi,
   approvedTokensInfo,
-  proxyRaffleAddress,
+  proxyGovernedAddress,
   approvedTokens,
 } from '@/constants';
 
@@ -76,8 +76,8 @@ const DepositCard = () => {
 
   const basicDeposit = async (data: z.infer<typeof formSchema>) => {
     writeContract({
-      address: proxyRaffleAddress,
-      abi: proxyRaffleAbi,
+      address: proxyGovernedAddress,
+      abi: proxyGovernedAbi,
       functionName: 'deposit',
       args: [BigInt(data.amount), BigInt(data.token)],
       chain: currentChain,
@@ -90,7 +90,7 @@ const DepositCard = () => {
       address: approvedTokens[Number(data.token)],
       abi: erc20Abi,
       functionName: 'approve',
-      args: [proxyRaffleAddress, BigInt(data.token)],
+      args: [proxyGovernedAddress, BigInt(data.token)],
       chain: currentChain,
       account: address,
     });
@@ -104,8 +104,8 @@ const DepositCard = () => {
     });
 
     writeContract({
-      address: proxyRaffleAddress,
-      abi: proxyRaffleAbi,
+      address: proxyGovernedAddress,
+      abi: proxyGovernedAbi,
       functionName: 'deposit',
       args: [BigInt(data.amount), BigInt(data.token)],
       chain: currentChain,

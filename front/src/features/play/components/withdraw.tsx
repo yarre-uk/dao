@@ -8,7 +8,7 @@ import {
 import { currentChain } from 'wagmiConfig';
 
 import { Button, CardLoader, TransactionInfo } from '@/components';
-import { proxyRaffleAbi, proxyRaffleAddress } from '@/constants';
+import { proxyGovernedAbi, proxyGovernedAddress } from '@/constants';
 import useGetDepositEvents from '@/hooks/useGetDepositEvents';
 import useWinner from '@/hooks/useWinner';
 import { FullDepositEvent } from '@/types';
@@ -29,14 +29,14 @@ const WithdrawCard = () => {
   const [chance, setChance] = useState<number>(0);
 
   const { data: pool } = useReadContract({
-    abi: proxyRaffleAbi,
-    address: proxyRaffleAddress,
+    abi: proxyGovernedAbi,
+    address: proxyGovernedAddress,
     functionName: 'pool',
   });
 
   const { data: owner } = useReadContract({
-    address: proxyRaffleAddress,
-    abi: proxyRaffleAbi,
+    address: proxyGovernedAddress,
+    abi: proxyGovernedAbi,
     account,
     functionName: 'owner',
   });
@@ -73,8 +73,8 @@ const WithdrawCard = () => {
       writeContract({
         account,
         chain: currentChain,
-        address: proxyRaffleAddress,
-        abi: proxyRaffleAbi,
+        address: proxyGovernedAddress,
+        abi: proxyGovernedAbi,
         functionName: 'withdraw',
         args: [winnerData.winner.event.id, winnerData.winner.event.id],
       });
@@ -84,8 +84,8 @@ const WithdrawCard = () => {
     writeContract({
       account,
       chain: currentChain,
-      address: proxyRaffleAddress,
-      abi: proxyRaffleAbi,
+      address: proxyGovernedAddress,
+      abi: proxyGovernedAbi,
       functionName: 'withdraw',
       args: [winnerData.winner.event.id, winnerData.proof.event.id],
     });

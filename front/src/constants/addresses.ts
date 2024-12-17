@@ -10,13 +10,13 @@ export const approvedTokensInfo = [
   { address: link, name: 'LINK', id: 1 },
 ];
 
-export const proxyRaffleAddress: bytes = import.meta.env
-  .VITE_PROXY_RAFFLE_CONTRACT_ADDRESS;
+export const proxyGovernedAddress: bytes = import.meta.env
+  .VITE_PROXY_GOVERNED_CONTRACT_ADDRESS;
 export const proxyGovernanceAddress: bytes = import.meta.env
   .VITE_PROXY_GOVERNANCE_CONTRACT_ADDRESS;
 
-if (!proxyRaffleAddress || !proxyGovernanceAddress) {
-  console.log('proxyRaffleAddress ->', proxyRaffleAddress);
+if (!proxyGovernedAddress || !proxyGovernanceAddress) {
+  console.log('proxyGovernedAddress ->', proxyGovernedAddress);
   console.log('proxyGovernanceAddress ->', proxyGovernanceAddress);
   throw new Error('Proxy contract addresses are not set');
 }

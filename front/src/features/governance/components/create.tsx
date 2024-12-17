@@ -20,7 +20,7 @@ import {
 import {
   proxyGovernanceAddress,
   proxyGovernanceAbi,
-  proxyRaffleAbi,
+  proxyGovernedAbi,
 } from '@/constants';
 import { bytes } from '@/types';
 
@@ -57,7 +57,7 @@ const encodeParams = (
   amount: number,
 ) => {
   return encodeFunctionData({
-    abi: proxyRaffleAbi,
+    abi: proxyGovernedAbi,
     functionName,
     args: [BigInt(amount)],
   });
