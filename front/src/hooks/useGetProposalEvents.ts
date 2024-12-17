@@ -24,7 +24,7 @@ const useGetProposalEvents = () => {
         `event ProposalCreated(bytes32 indexed id, address indexed sender)`,
       ),
       args,
-      fromBlock: block.number - 99999n,
+      fromBlock: block.number - 1000n,
       toBlock: block.number,
     });
 

@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUp } from 'lucide-react';
-import { decodeFunctionData } from 'viem';
+import { decodeFunctionData, formatEther, parseEther } from 'viem';
 import {
   useAccount,
   useWaitForTransactionReceipt,
@@ -78,8 +78,8 @@ const ProposalList = ({
           </p>
           <span>
             Votes: {<ArrowUp className="inline text-green-700" />}{' '}
-            {proposal.proposal.forVotes.toString()} -{' '}
-            {proposal.proposal.againstVotes.toString()}{' '}
+            {formatEther(proposal.proposal.forVotes)} -{' '}
+            {formatEther(proposal.proposal.againstVotes)}{' '}
             {<ArrowDown className="inline text-red-600" />}
           </span>
           <p>State: {proposalState[proposal.proposal.state]}</p>
