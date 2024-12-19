@@ -22,8 +22,8 @@ const ProcessCard = () => {
 
   const handleFetchProposal = async () => {
     setIsLoading(true);
-    const proposals = await fetchProposal({});
-    const filteredProposals = proposals.filter(
+    const proposals = await fetchProposal();
+    const filteredProposals = proposals?.filter(
       (proposal) =>
         proposal.proposal.state == 0 &&
         proposal.proposal.votingStartedAt !== 0n &&

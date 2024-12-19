@@ -15,8 +15,8 @@ const ProcessedCard = () => {
 
   const handleFetchProposal = async () => {
     setIsLoading(true);
-    const proposals = await fetchProposal({});
-    const filteredProposals = proposals.filter(
+    const proposals = await fetchProposal();
+    const filteredProposals = proposals?.filter(
       (proposal) => proposal.proposal.state !== 0,
     );
     setData(filteredProposals);

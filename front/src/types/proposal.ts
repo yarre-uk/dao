@@ -1,8 +1,15 @@
 import { bytes } from '@/types';
 
+export enum ProposalStatus {
+  Created,
+  Processed,
+  Canceled,
+}
+
 export type ProposalEvent = {
   id: bytes;
   sender: bytes;
+  state: ProposalStatus;
 };
 
 export type ProposalData = {

@@ -15,7 +15,7 @@ const AllCard = () => {
 
   const handleFetchProposal = async () => {
     setIsLoading(true);
-    setData(await fetchProposal({}));
+    setData(await fetchProposal());
     setIsLoading(false);
   };
 

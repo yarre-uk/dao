@@ -5,53 +5,26 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: MarketplaceExtended
+    name: GovernanceExtended
     network: sepolia
     source:
-      address: "0x4021800457040b297706b7ADfeaAd1D6264368A6"
-      abi: MarketplaceExtended
-      startBlock: 6250515
+      address: "0x265a5241ca6AD2Aed5431D44FCD09AA24dF93e65"
+      abi: GovernanceExtended
+      startBlock: 7293128
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Order
+        - Proposal
       abis:
-        - name: MarketplaceExtended
-          file: ./abis/MarketplaceExtended.json
+        - name: GovernanceExtended
+          file: ./abis/GovernanceExtended.json
       eventHandlers:
-        - event: OrderCreated(indexed bytes32,indexed address,indexed uint8,uint256,uint256,uint256,bytes,uint256)
-          handler: handleOrderCreated
-        - event: OrderProcessed(indexed bytes32,indexed bytes32)
-          handler: handleOrderProcessed
-        - event: OrderCanceled(indexed bytes32,indexed address)
-          handler: handleOrderCanceled
-      file: ./src/marketplace-extended.ts
-
-  - kind: ethereum
-    name: OrderbookExtended
-    network: sepolia
-    source:
-      address: "0x57854F795eb7228DF90fDEc179C995d1eA9b39E2"
-      abi: OrderbookExtended
-      startBlock: 6285390 
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Orderbook
-      abis:
-        - name: OrderbookExtended
-          file: ./abis/OrderbookExtended.json
-      eventHandlers:
-        - event: OrderCreated(indexed bytes32,indexed address,indexed uint256,uint256,uint256,uint256,uint8)
-          handler: handleOrderCreated
-        - event: OrderUpdated(indexed bytes32,uint256)
-          handler: handleOrderUpdated
-        - event: OrderProcessed(indexed bytes32)
-          handler: handleOrderProcessed
-        - event: OrderDeleted(indexed bytes32)
-          handler: handleOrderDeleted
-      file: ./src/orderbook-extended.ts
+        - event: ProposalCreated(indexed bytes32,indexed address)
+          handler: handleProposalCreated
+        # - event: ProposalVoted(indexed bytes32,indexed address,bool)
+        #   handler: handleProposalVoted
+        - event: ProposalProcessed(indexed bytes32,indexed address,indexed uint8)
+          handler: handleProposalProcessed
+      file: ./src/governance-extended.ts

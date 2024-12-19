@@ -1,29 +1,8 @@
-type Order @entity(mutable: true) {
+type Proposal @entity(mutable: true) {
   id: Bytes!
-  sender: Bytes! # address
-  signature: Bytes! # address
-  orderType: Int! # uint8
-  orderStatus: Int! # uint8
-  price: BigInt!
-  nftId: BigInt!
-  createdAt: BigInt!
-  nonce: BigInt!
-  MarketplaceExtended_id: Bytes! # bytes32
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
+  owner: Bytes!
+  state: Int!
 
-type Orderbook @entity(mutable: true) {
-  id: Bytes!
-  sender: Bytes!
-  tokenId: BigInt!
-  price: BigInt!
-  amount: BigInt!
-  createdAt: BigInt!
-  orderType: Int!
-  processed: Boolean!
-  OrderbookExtended_id: Bytes!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
